@@ -9,15 +9,21 @@ public enum ImageExtension {
 
 	private MediaType mediaType;
 
+	// constructor
 	private ImageExtension(MediaType mediaType) {
 		this.mediaType = mediaType;
 	}
 
+	// methods
 	public static ImageExtension valueOf(MediaType mediaType) {
-		return Arrays.stream(values()).filter(ie -> ie.mediaType
-				.equals(mediaType)).findFirst().orElse(null);
+		return Arrays.stream(values()).filter(ie -> ie.mediaType.equals(mediaType)).findFirst().orElse(null);
 	}
 
+	public static ImageExtension ofName(String name) {
+		return Arrays.stream(values()).filter(ie -> ie.name().equalsIgnoreCase(name)).findFirst().orElse(null);
+	}
+
+	// get and set
 	public MediaType getMediaType() {
 		return mediaType;
 	}
