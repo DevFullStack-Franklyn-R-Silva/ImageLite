@@ -3,6 +3,7 @@ package com.github.hadesfranklyn.project.images;
 import java.io.IOException;
 import java.net.URI;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -18,6 +19,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.github.hadesfranklyn.project.domain.entity.Image;
+import com.github.hadesfranklyn.project.domain.enums.ImageExtension;
 import com.github.hadesfranklyn.project.domain.service.ImageService;
 
 import lombok.RequiredArgsConstructor;
@@ -61,6 +63,20 @@ public class ImagesController {
 		headers.setContentDispositionFormData("inline; filename=\"" + image.getFileName() + "\"", image.getFileName());
 
 		return new ResponseEntity<>(image.getFile(), headers, HttpStatus.OK);
+	}
+
+	// localhost:8080/v1/images?extension=PNG&query=Nature
+	@GetMapping
+	public ResponseEntity<List<ImageDTO>> search(@RequestParam(value = "extension", required = false, defaultValue = "") String extension,
+			@RequestParam(value = "query", required = false) String query) {
+		var result = service.search(ImageExtension.valueOf(extension), query);
+		
+		var images = result.stream().map(image -> {
+			var url = buildImageURL(image);
+			return mapper.imageToDTO(image, url.toString());
+		}).collect(Collectors.toList());
+
+		return ResponseEntity.ok(images);
 	}
 
 	// localhost:8080/v1/images/dasdasdqdasdas
