@@ -1,5 +1,7 @@
 "use client";
 
+import { ButtonSVG } from "./buttton";
+
 interface ImageCardProps {
   nome?: string;
   tamanho?: number;
@@ -27,20 +29,17 @@ export const ImageCard: React.FC<ImageCardProps> = ({
         <p className="text-gray-600">{extension}</p>
         <p className="text-gray-600">{formatBytes(tamanho)}</p>
         <p className="text-gray-600">{dataUpload}</p>
-        <svg
+        <ButtonSVG
+          style="h-8 w-8"
           onClick={download}
-          className="h-8 w-8 text-gray-400  hover:text-black"
           fill="none"
           viewBox="0 0 24 24"
           stroke="currentColor"
-        >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"
-          />
-        </svg>
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="2"
+          d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"
+        />
       </div>
     </div>
   );

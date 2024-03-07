@@ -1,11 +1,11 @@
 interface TemplateProps {
-  children: React.ReactNode;
-  loading: boolean;
+  children?: React.ReactNode;
+  loading?: boolean;
 }
 
 export const Template: React.FC<TemplateProps> = ({
   children,
-  loading,
+  loading = false,
 }: TemplateProps) => {
   return (
     <>
