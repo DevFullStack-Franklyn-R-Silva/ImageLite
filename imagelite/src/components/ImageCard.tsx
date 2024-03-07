@@ -30,7 +30,7 @@ export const ImageCard: React.FC<ImageCardProps> = ({
         <p className="text-gray-600">{formatBytes(tamanho)}</p>
         <p className="text-gray-600">{dataUpload}</p>
         <ButtonSVG
-          style="h-8 w-8"
+          style="h-8 w-8 text-gray-400  hover:text-black"
           onClick={download}
           fill="none"
           viewBox="0 0 24 24"

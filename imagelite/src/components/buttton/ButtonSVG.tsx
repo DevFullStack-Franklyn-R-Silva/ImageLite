@@ -1,13 +1,16 @@
 interface ButtonSVGProps {
   style?: string;
-  fill: string;
-  viewBox: string;
-  stroke: string;
-  strokeLinecap: string;
-  strokeLinejoin: string;
-  strokeWidth: string;
-  d: string;
-  onClick?: (event: any) => void;
+  fill?: string;
+  viewBox?: string;
+  stroke?: string;
+  strokeLinecap?: "butt" | "round" | "square" | "inherit" | undefined;
+  strokeLinejoin?: "miter" | "round" | "bevel" | "inherit" | undefined;
+  strokeWidth?: string;
+  d?: string;
+  onClick?: (event: React.MouseEvent<SVGElement>) => void;
+  ariaHidden?: any;
+  fillRule?: "inherit" | "nonzero" | "evenodd" | undefined;
+  clipRule?: string;
 }
 
 export const ButtonSVG: React.FC<ButtonSVGProps> = ({
@@ -20,20 +23,26 @@ export const ButtonSVG: React.FC<ButtonSVGProps> = ({
   strokeWidth,
   d,
   onClick,
+  ariaHidden,
+  fillRule,
+  clipRule,
 }: ButtonSVGProps) => {
   return (
     <svg
-      className={`${style}  text-gray-400  hover:text-black`}
+      className={style}
       onClick={onClick}
       fill={fill}
       viewBox={viewBox}
       stroke={stroke}
+      aria-hidden={ariaHidden}
     >
       <path
-        stroke-linecap={strokeLinecap}
-        stroke-linejoin={strokeLinejoin}
-        stroke-width={strokeWidth}
+        strokeLinecap={strokeLinecap}
+        strokeLinejoin={strokeLinejoin}
+        strokeWidth={strokeWidth}
         d={d}
+        fillRule={fillRule}
+        clipRule={clipRule}
       />
     </svg>
   );
