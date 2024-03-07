@@ -1,6 +1,6 @@
 "use client";
 
-import { Button, ImageCard, Template } from "@/components";
+import { Button, ImageCard, InputText, Template } from "@/components";
 import { Image } from "@/resources/image/image.resource";
 import { useImageService } from "@/resources/image/image.service";
 import { useState } from "react";
@@ -41,10 +41,9 @@ export default function GaleriaPage() {
     <Template loading={loading}>
       <section className="flex flex-col items-center justify-center my-5">
         <div className="flex space-x-4">
-          <input
-            type="text"
+          <InputText
+            placeholder="Pesquisar..."
             onChange={(event) => setQuery(event.target.value)}
-            className="border px-3 py-2 rounded-lg text-gray-900"
           />
           <select
             className="border px-4 py-2 rounded-lg text-gray-900"
