@@ -2,9 +2,10 @@
 
 interface ImageCardProps {
   nome?: string;
-  tamanho?: string;
+  tamanho?: number;
   dataUpload?: string;
   src?: string;
+  extension?: string;
 }
 
 export const ImageCard: React.FC<ImageCardProps> = ({
@@ -12,6 +13,7 @@ export const ImageCard: React.FC<ImageCardProps> = ({
   tamanho,
   dataUpload,
   src,
+  extension,
 }: ImageCardProps) => {
   function download() {
     window.open(src, "_blank");
@@ -22,7 +24,8 @@ export const ImageCard: React.FC<ImageCardProps> = ({
       <img src={src} alt="" className="h-56 w-full object-fill rounded-t-md" />
       <div className="card-body p-4">
         <h5 className="text-xl font-semibold mb-2 text-gray-600">{nome}</h5>
-        <p className="text-gray-600">{tamanho}</p>
+        <p className="text-gray-600">{extension}</p>
+        <p className="text-gray-600">{formatBytes(tamanho)}</p>
         <p className="text-gray-600">{dataUpload}</p>
         <svg
           onClick={download}
@@ -42,3 +45,15 @@ export const ImageCard: React.FC<ImageCardProps> = ({
     </div>
   );
 };
+
+function formatBytes(bytes: number = 0, decimals = 2) {
+  if (isNaN(bytes)) return "0 Bytes";
+
+  const k = 1024;
+  const dm = decimals < 0 ? 0 : decimals;
+  const sizes = ["Bytes", "KB", "MB", "GB"];
+
+  const i = Math.floor(Math.log(bytes) / Math.log(k));
+
+  return `${(bytes / Math.pow(k, i)).toFixed(dm)} ${sizes[i]}`;
+}
