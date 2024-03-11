@@ -3,6 +3,7 @@ interface InputTextProps {
   onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
   placeholder?: string;
   id?: string;
+  value?: string;
 }
 
 export const InputText: React.FC<InputTextProps> = ({
