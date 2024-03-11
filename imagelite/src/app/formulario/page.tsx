@@ -87,6 +87,7 @@ export default function FormularioPage() {
             <label className="block text-sm font-medium leading-6 text-gray-700">
               Image: *
             </label>
+            <span className="text-red-500"> {formik.errors.file}</span>
             <div className="mt-2 flex justify-center rounded-lg border border-dashed border-gray-900/25 px-6 py-10">
               <div className="text-center">
                 <RenderIf condition={!imagePreview}>
