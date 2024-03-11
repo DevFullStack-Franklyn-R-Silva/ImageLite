@@ -7,6 +7,7 @@ import {
   Button,
   RenderIf,
   UseNotification,
+  FieldError,
 } from "@/components";
 import { useImageService } from "@/resources/image/image.service";
 import { useFormik } from "formik";
@@ -69,7 +70,7 @@ export default function FormularioPage() {
               onChange={formik.handleChange}
               placeholder="Type the image's name"
             />
-            <span className="text-red-500"> {formik.errors.name}</span>
+            <FieldError error={formik.errors.name} />
           </div>
           <div className="mt-5 grid grid-cols-1">
             <label className="block text-sm font-medium leading-6 text-gray-700">
@@ -81,13 +82,13 @@ export default function FormularioPage() {
               onChange={formik.handleChange}
               placeholder="Type the tags comma separated"
             />
-            <span className="text-red-500"> {formik.errors.tags}</span>
+            <FieldError error={formik.errors.tags} />
           </div>
           <div className="mt-5 grid grid-cols-1">
             <label className="block text-sm font-medium leading-6 text-gray-700">
               Image: *
             </label>
-            <span className="text-red-500"> {formik.errors.file}</span>
+            <FieldError error={formik.errors.file} />
             <div className="mt-2 flex justify-center rounded-lg border border-dashed border-gray-900/25 px-6 py-10">
               <div className="text-center">
                 <RenderIf condition={!imagePreview}>
