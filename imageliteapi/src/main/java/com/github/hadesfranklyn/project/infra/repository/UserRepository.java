@@ -8,4 +8,6 @@ import com.github.hadesfranklyn.project.domain.entity.User;
 @Repository
 public interface UserRepository  extends JpaRepository<User, String>{
 
+	User findByEmail(String email);
+
 }
