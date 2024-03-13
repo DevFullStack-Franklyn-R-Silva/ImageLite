@@ -1,4 +1,4 @@
-package com.github.hadesfranklyn.project.users;
+package com.github.hadesfranklyn.project.application.users;
 
 import lombok.Data;
 

@@ -1,10 +1,9 @@
-package com.github.hadesfranklyn.project.users;
+package com.github.hadesfranklyn.project.application.users;
 
 import java.util.Map;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,7 +17,6 @@ import lombok.RequiredArgsConstructor;
 
 @RestController
 @RequestMapping("/v1/users")
-@CrossOrigin("*")
 @RequiredArgsConstructor
 public class UserController {
 
@@ -26,7 +24,7 @@ public class UserController {
 	private final UserMapper userMapper;
 
 	@PostMapping
-	public ResponseEntity save(@RequestBody UserDTO dto) {
+	public ResponseEntity<?> save(@RequestBody UserDTO dto) {
 		try {
 			User user = userMapper.mapToUser(dto);
 			userService.save(user);
@@ -39,7 +37,7 @@ public class UserController {
 	}
 
 	@PostMapping("/auth")
-	public ResponseEntity authenticate(@RequestBody CredentialsDTO credentials) {
+	public ResponseEntity<?> authenticate(@RequestBody CredentialsDTO credentials) {
 		var token = userService.authenticate(credentials.getEmail(), credentials.getPassword());
 		if (token == null) {
 			return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();

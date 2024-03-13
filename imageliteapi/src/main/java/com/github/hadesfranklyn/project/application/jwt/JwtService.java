@@ -1,4 +1,4 @@
-package com.github.hadesfranklyn.project.jwt;
+package com.github.hadesfranklyn.project.application.jwt;
 
 import java.time.LocalDateTime;
 import java.time.ZoneId;

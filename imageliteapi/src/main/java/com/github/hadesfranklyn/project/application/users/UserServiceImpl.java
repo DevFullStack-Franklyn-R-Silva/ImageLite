@@ -1,15 +1,15 @@
-package com.github.hadesfranklyn.project.users;
+package com.github.hadesfranklyn.project.application.users;
 
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.github.hadesfranklyn.project.application.jwt.JwtService;
 import com.github.hadesfranklyn.project.domain.AccessToken;
 import com.github.hadesfranklyn.project.domain.entity.User;
 import com.github.hadesfranklyn.project.domain.exception.DuplicatedTupleException;
 import com.github.hadesfranklyn.project.domain.service.UserService;
 import com.github.hadesfranklyn.project.infra.repository.UserRepository;
-import com.github.hadesfranklyn.project.jwt.JwtService;
 
 import lombok.RequiredArgsConstructor;
 

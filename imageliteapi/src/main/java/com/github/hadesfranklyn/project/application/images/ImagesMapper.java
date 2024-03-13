@@ -1,4 +1,4 @@
-package com.github.hadesfranklyn.project.images;
+package com.github.hadesfranklyn.project.application.images;
 
 import java.io.IOException;
 import java.util.List;
