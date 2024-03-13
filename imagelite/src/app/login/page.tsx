@@ -13,7 +13,11 @@ import { LoginForm, formScheme, validationScheme } from "./formScheme";
 import { useFormik } from "formik";
 import { useAuth } from "@/resources";
 import { useRouter } from "next/navigation";
-import { AccessToken, Credentials } from "@/resources/user/users.resources";
+import {
+  AccessToken,
+  Credentials,
+  User,
+} from "@/resources/user/users.resources";
 
 export default function Login() {
   const [loading, setLoading] = useState<boolean>(false);
@@ -23,11 +27,12 @@ export default function Login() {
   const notificattion = useNotification();
   const router = useRouter();
 
-  const { values, handleChange, handleSubmit, errors } = useFormik<LoginForm>({
-    initialValues: formScheme,
-    validationSchema: validationScheme,
-    onSubmit: onSubmit,
-  });
+  const { values, handleChange, handleSubmit, errors, resetForm } =
+    useFormik<LoginForm>({
+      initialValues: formScheme,
+      validationSchema: validationScheme,
+      onSubmit: onSubmit,
+    });
 
   async function onSubmit(values: LoginForm) {
     if (!newUserState) {
@@ -39,6 +44,23 @@ export default function Login() {
       try {
         const accessToken: AccessToken = await auth.authenticate(credentials);
         router.push("/galeria");
+      } catch (error: any) {
+        const message = error?.message;
+        notificattion.notify(message, "error");
+      }
+    } else {
+      const user: User = {
+        name: values.name,
+        email: values.email,
+        password: values.password,
+      };
+
+      resetForm();
+      setNewUserState(false);
+
+      try {
+        await auth.save(user);
+        notificattion.notify("Success on saving user!", "success");
       } catch (error: any) {
         const message = error?.message;
         notificattion.notify(message, "error");
