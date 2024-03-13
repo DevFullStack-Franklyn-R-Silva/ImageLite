@@ -6,7 +6,7 @@ import org.springframework.stereotype.Repository;
 import com.github.hadesfranklyn.project.domain.entity.User;
 
 @Repository
-public interface UserRepository  extends JpaRepository<User, String>{
+public interface UserRepository extends JpaRepository<User, String> {
 
 	User findByEmail(String email);
 
