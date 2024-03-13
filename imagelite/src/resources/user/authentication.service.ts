@@ -24,3 +24,5 @@ class AuthService {
     return await response.json();
   }
 }
+
+export const useAuth = () => new AuthService();
