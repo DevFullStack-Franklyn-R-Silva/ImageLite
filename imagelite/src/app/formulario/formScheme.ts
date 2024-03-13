@@ -13,10 +13,12 @@ export const formValidationScheme = Yup.object().shape({
     .trim()
     .required("Name is required!")
     .max(50, "Name has the limit of 50 characters!"),
+
   tags: Yup.string()
     .trim()
     .required("Tags is required!")
     .max(50, "Tags has the limit of 50 characters!"),
+
   file: Yup.mixed<Blob>()
     .required("Select an image to upload!")
     .test("size", "File size cannot be higher than 20 MB", (file) => {
