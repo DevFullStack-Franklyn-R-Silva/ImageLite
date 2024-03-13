@@ -8,7 +8,7 @@ import {
   UseNotification,
 } from "@/components";
 import { Image } from "@/resources/image/image.resource";
-import { useImageService } from "@/resources/image/image.service";
+import { useImageService } from "@/resources";
 import { useState } from "react";
 import Link from "next/link";
 

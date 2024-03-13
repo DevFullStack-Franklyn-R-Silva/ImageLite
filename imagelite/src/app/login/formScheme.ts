@@ -15,11 +15,6 @@ export const formScheme: LoginForm = {
 };
 
 export const validationScheme = Yup.object().shape({
-  name: Yup.string()
-    .trim()
-    .required("Name is required!")
-    .max(50, "Name has the limit of 50 characters!"),
-
   email: Yup.string()
     .trim()
     .required("Email is required!")
