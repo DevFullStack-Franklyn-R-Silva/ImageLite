@@ -1,11 +1,16 @@
 import { toast } from "react-toastify";
 
-export const UseNotification = () => {
+export const useNotification = () => {
   function notify(
     message: string,
     level: "success" | "info" | "warning" | "error"
   ) {
-    toast(message, { type: level });
+    toast(message, {
+      type: level,
+    });
   }
-  return { notify };
+
+  return {
+    notify,
+  };
 };

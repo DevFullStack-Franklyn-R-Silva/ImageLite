@@ -5,7 +5,7 @@ import {
   ImageCard,
   InputText,
   Template,
-  UseNotification,
+  useNotification,
 } from "@/components";
 import { Image } from "@/resources/image/image.resource";
 import { useImageService } from "@/resources";
@@ -14,7 +14,7 @@ import Link from "next/link";
 
 export default function GaleriaPage() {
   const useService = useImageService();
-  const notification = UseNotification();
+  const notification = useNotification();
   const [images, setImages] = useState<Image[]>([]);
   const [query, setQuery] = useState<string>("");
   const [extension, setExtension] = useState<string>("");

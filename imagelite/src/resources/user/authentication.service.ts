@@ -6,7 +6,7 @@ import {
 } from "./users.resources";
 
 class AuthService {
-  baseURL: string = "http://localhost:8080/v1/images";
+  baseURL: string = "http://localhost:8080/v1/users";
   static AUTH_PARAM: string = "_auth";
 
   async authenticate(credentials: Credentials): Promise<AccessToken> {
@@ -17,7 +17,8 @@ class AuthService {
         "Content-Type": "application/json",
       },
     });
-    if (response.status === 401) {
+
+    if (response.status == 401) {
       throw new Error("User or password are incorrect!");
     }
 

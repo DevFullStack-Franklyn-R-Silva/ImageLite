@@ -6,7 +6,7 @@ import {
   InputText,
   Button,
   FieldError,
-  UseNotification,
+  useNotification,
 } from "@/components";
 import { useState } from "react";
 import { LoginForm, formScheme, validationScheme } from "./formScheme";
@@ -20,7 +20,7 @@ export default function Login() {
   const [newUserState, setNewUserState] = useState<boolean>(false);
 
   const auth = useAuth();
-  const notificattion = UseNotification();
+  const notificattion = useNotification();
   const router = useRouter();
 
   const { values, handleChange, handleSubmit, errors } = useFormik<LoginForm>({
