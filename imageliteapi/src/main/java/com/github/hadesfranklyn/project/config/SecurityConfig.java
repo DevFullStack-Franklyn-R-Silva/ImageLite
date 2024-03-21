@@ -27,9 +27,10 @@ public class SecurityConfig {
 				.csrf(AbstractHttpConfigurer::disable)
 				.cors(cors -> cors.configure(http))
 				.authorizeHttpRequests(auth -> {
-					auth.anyRequest().permitAll();
-				})
-				.build();
+					auth.requestMatchers("/v1/users/**").permitAll();
+					
+					auth.anyRequest().authenticated();
+				}).build();
 	}
 
 	@Bean
