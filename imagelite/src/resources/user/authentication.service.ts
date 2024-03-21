@@ -57,14 +57,16 @@ class AuthService {
   }
 
   setUserSession(userSessionToken: UserSessionToken) {
-    localStorage.setItem(
-      AuthService.AUTH_PARAM,
-      JSON.stringify(userSessionToken)
-    );
+    try {
+      localStorage.setItem(
+        AuthService.AUTH_PARAM,
+        JSON.stringify(userSessionToken)
+      );
+    } catch (error) {}
   }
 
   getUserSession(): UserSessionToken | null {
-    if (typeof localStorage !== "undefined") {
+    try {
       const authString = localStorage.getItem(AuthService.AUTH_PARAM);
       if (!authString) {
         return null;
@@ -72,8 +74,7 @@ class AuthService {
 
       const token: UserSessionToken = JSON.parse(authString);
       return token;
-    } else {
-      // Tratar o caso em que localStorage não está disponível
+    } catch (error) {
       return null;
     }
   }
@@ -93,7 +94,9 @@ class AuthService {
   }
 
   invalidateSession(): void {
-    localStorage.removeItem(AuthService.AUTH_PARAM);
+    try {
+      localStorage.removeItem(AuthService.AUTH_PARAM);
+    } catch (error) {}
   }
 }
 
