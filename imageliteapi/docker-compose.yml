@@ -31,7 +31,6 @@ services:
   sbootapp:
     build:
       dockerfile: Dockerfile
-      context: ./imageliteapi
     container_name: imageliteapi
     restart: on-failure
     depends_on:
