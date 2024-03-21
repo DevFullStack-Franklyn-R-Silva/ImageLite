@@ -1,6 +1,7 @@
 "use client";
 
 import {
+  AuthenticatedPage,
   Button,
   ImageCard,
   InputText,
@@ -49,33 +50,40 @@ export default function GaleriaPage() {
   }
 
   return (
-    <Template loading={loading}>
-      <section className="flex flex-col items-center justify-center my-5">
-        <div className="flex space-x-4">
-          <InputText
-            placeholder="Type Name or Tags"
-            onChange={(event) => setQuery(event.target.value)}
-          />
-          <select
-            className="border px-4 py-2 rounded-lg text-gray-900"
-            onChange={(event) => setExtension(event.target.value)}
-          >
-            <option value="">All formats</option>
-            <option value="PNG">PNG</option>
-            <option value="JPEG">JPEG</option>
-            <option value="GIF">GIF</option>
-          </select>
-          <Button
-            style="bg-blue-500 hover:bg-blue-300 "
-            label="Search"
-            onClick={searchImages}
-          />
-          <Link href="/formulario">
-            <Button style="bg-yellow-500 hover:bg-yellow-300" label="Add New" />
-          </Link>
-        </div>
-      </section>
-      <section className="grid grid-cols-4 gap-8">{renderImageCards()}</section>
-    </Template>
+    <AuthenticatedPage>
+      <Template loading={loading}>
+        <section className="flex flex-col items-center justify-center my-5">
+          <div className="flex space-x-4">
+            <InputText
+              placeholder="Type Name or Tags"
+              onChange={(event) => setQuery(event.target.value)}
+            />
+            <select
+              className="border px-4 py-2 rounded-lg text-gray-900"
+              onChange={(event) => setExtension(event.target.value)}
+            >
+              <option value="">All formats</option>
+              <option value="PNG">PNG</option>
+              <option value="JPEG">JPEG</option>
+              <option value="GIF">GIF</option>
+            </select>
+            <Button
+              style="bg-blue-500 hover:bg-blue-300 "
+              label="Search"
+              onClick={searchImages}
+            />
+            <Link href="/formulario">
+              <Button
+                style="bg-yellow-500 hover:bg-yellow-300"
+                label="Add New"
+              />
+            </Link>
+          </div>
+        </section>
+        <section className="grid grid-cols-4 gap-8">
+          {renderImageCards()}
+        </section>
+      </Template>
+    </AuthenticatedPage>
   );
 }
