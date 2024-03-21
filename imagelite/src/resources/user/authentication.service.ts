@@ -46,7 +46,7 @@ class AuthService {
       const decodedToken: any = jwt(token.accessToken);
 
       const userSessionToken: UserSessionToken = {
-        AccessToken: token.accessToken,
+        accessToken: token.accessToken,
         email: decodedToken.sub,
         name: decodedToken.name,
         expiration: decodedToken.exp,
@@ -64,13 +64,18 @@ class AuthService {
   }
 
   getUserSession(): UserSessionToken | null {
-    const authString = localStorage.getItem(AuthService.AUTH_PARAM);
-    if (!authString) {
+    if (typeof localStorage !== "undefined") {
+      const authString = localStorage.getItem(AuthService.AUTH_PARAM);
+      if (!authString) {
+        return null;
+      }
+
+      const token: UserSessionToken = JSON.parse(authString);
+      return token;
+    } else {
+      // Tratar o caso em que localStorage não está disponível
       return null;
     }
-
-    const token: UserSessionToken = JSON.parse(authString);
-    return token;
   }
 
   isSessionValid(): boolean {
