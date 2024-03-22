@@ -1,4 +1,5 @@
 # ImageLite
+![GIF](midia/imagelite.gif)
 
 ImageLite é um projeto full-stack que utiliza React com TypeScript para o frontend, Spring Boot Java para o backend, Docker para containerização, PostgreSQL como banco de dados, Tailwind CSS para estilização, Next.js para renderização do lado do cliente, e JWT para autenticação. Este projeto inclui uma galeria de imagens para armazenamento.
 
