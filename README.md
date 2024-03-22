@@ -13,16 +13,19 @@ O projeto está organizado em duas pastas principais:
 ## Tecnologias Utilizadas
 
 - **Frontend**:
+
   - React
   - TypeScript
   - Next.js
   - Tailwind CSS
 
 - **Backend**:
+
   - Spring Boot (Java)
   - JWT (JSON Web Token) para autenticação
 
 - **Banco de Dados**:
+
   - PostgreSQL
 
 - **Containerização**:
@@ -30,13 +33,15 @@ O projeto está organizado em duas pastas principais:
 
 ## Iniciando o Projeto
 
-Certifique-se de ter o Docker instalado em sua máquina antes de iniciar. 
+Certifique-se de ter o Docker instalado em sua máquina antes de iniciar.
 
 1. **Backend**:
+
    - Navegue até a pasta `imageliteapi`.
    - Execute o comando `./mvnw spring-boot:run` para iniciar o backend.
 
 2. **Frontend**:
+
    - Navegue até a pasta `imagelite`.
    - Execute o comando `npm install` para instalar as dependências.
    - Em seguida, execute `npm run dev` para iniciar o servidor de desenvolvimento.
@@ -44,9 +49,8 @@ Certifique-se de ter o Docker instalado em sua máquina antes de iniciar.
 3. **Acesso ao Projeto**:
    - O frontend estará disponível em [http://localhost:3000](http://localhost:3000).
    - O backend estará disponível em [http://localhost:8080](http://localhost:8080).
+   - O PGAdmin (interface do PostgreSQL) estará disponível em [http://localhost:15432](http://localhost:15432). Use o email `admin@admin.com` e senha `admin` para fazer login.
 
 ## Contribuindo
 
 Sinta-se à vontade para contribuir para o desenvolvimento do ImageLite. Faça um fork do repositório, faça suas modificações e envie um pull request.
-
-
